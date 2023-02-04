@@ -185,12 +185,12 @@ Use curl to run a request to our protect server with the valid user certificate
 To create a new virtual environment run the following commands:
 
 ```bash
-cd python_client
 python -m venv venv
 pip install -r requirements.txt
+source venv/bin/activate
 ```
 
-Then run the app using `python client/main.py`
+Then run the app using `python python_client/src/main.py
 
 
 
