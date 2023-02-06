@@ -173,7 +173,7 @@ openssl x509 -req -days 365 -in jwt/trusted_jwt_signer.csr -CA ca/ca.crt -CAkey 
 Verify the setup by running: `docker-compose up` (maybe `sudo docker-compse up` is working for you)
 
 Use curl to run a request to our protect server with the valid user certificate
-> NOTE: If you used **Option 1** use `docker cp x509-auth-with-nginx-auth-request_python_server_1:/app/certs/ certs` to copy the certificates created with docker-compose to your host 
+> NOTE: If you directly jumped to this section, run `docker cp x509-auth-with-nginx-auth-request_python_server_1:/app/certs/ certs` to copy the certificates created with docker-compose to your host 
 
 `curl https://localhost:443 --cert certs/clients/client.crt --key certs/clients/client.key -k`
 
