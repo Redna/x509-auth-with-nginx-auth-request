@@ -83,7 +83,7 @@ For the authentication scenario the following folder structure will be created.
         └── unknown_client.key
 
 
-The fastest and easiest way to setup the structure illustrated above is to run **Option 1** in a docker container. **Option 2** is still fast, but only works on linux - However, if you like, you can follow along **Option 3** to create all certificates one by one.
+The fastest and easiest way to setup the structure illustrated above is to jump directly to **Run the scenario**. The "legacy" **Option 1** can still be used on linux or if you like, you can follow along **Option 2** to create all certificates one by one.
 
 ### Option 1: Run the setup script to get the certificates ready for you
 ```
@@ -93,7 +93,7 @@ sh ./scripts/build_certificates
 ```
 
 
-### Option 3: Run the setup script to get the certificates ready for you
+### Option 1: Run the setup script to get the certificates ready for you
 
 #### 1. Certificate Authority (CA)
 
