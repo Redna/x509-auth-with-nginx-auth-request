@@ -1,17 +1,25 @@
 version: '3'
 services:
+  cert_builder:
+    image: cert-builder
+    build: cert_builder/.
+    volumes: 
+      - certs-volume:/certs
+
   nginx:
     image: nginx:latest
     ports:
       - "443:443"
     volumes:
-      - ./certs:/etc/nginx/certs/
+      - certs-volume:/etc/nginx/certs/
       - ./default.conf:/etc/nginx/conf.d/default.conf
     links:
       - echo
       - python_server
     networks:
       - nginx_network
+    depends_on:
+      - cert_builder
 
   echo:
     image: "mendhak/http-https-echo"
@@ -23,13 +31,31 @@ services:
   python_server:
     build: .
     volumes:
-      - ./certs:/app/certs/
+      - ./python_server/src:/app/src
+      - certs-volume:/app/certs/
     expose: 
       - 5000
     networks:
       - nginx_network
+    depends_on:
+      - cert_builder
+  
+  python_client:
+    build: .
+    volumes:
+      - ./python_client/src:/app/src
+      - certs-volume:/app/certs/
+    networks:
+      - nginx_network
+    depends_on:
+      - cert_builder
+      - nginx
+      - python_server
+      - echo
 
 networks:
   nginx_network:
     driver: bridge
 
+volumes:
+  certs-volume:
