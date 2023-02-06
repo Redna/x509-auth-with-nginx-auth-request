@@ -8,7 +8,7 @@ from starlette import status
 from cryptography.x509 import load_pem_x509_certificate
 
 
-ALLOWED_CN = ["Alexander"]
+ALLOWED_CN = ["JackAuthorized"]
 
 app = FastAPI()
 
