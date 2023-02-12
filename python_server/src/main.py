@@ -12,7 +12,7 @@ ALLOWED_CN = ["JackAuthorized"]
 
 app = FastAPI()
 
-with open("./certs/clients/client.crt", "rb") as file:
+with open("certs/jwt/trusted_jwt_signer.crt", "rb") as file:
     public_cert = load_pem_x509_certificate(file.read())
     public_key = public_cert.public_key()
 
